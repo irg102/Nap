@@ -20,11 +20,11 @@ class Deck (object):
 			self._cards.pop()
 
 	def _populate(self):
-		fullDeck = len(Card.RANK)
+		fullDeck = len(Card.RANK) + 1
 		indexPosition = fullDeck - self._size
 		for i in range(indexPosition, fullDeck):
 			for suit in Card.SUIT:
-				card = Card(Card.RANK[i], suit)
+				card = Card(Card.RANK(i), suit)
 				self._cards.append(card)
 
 	def _shuffle(self):

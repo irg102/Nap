@@ -37,3 +37,7 @@ class Player (object):
 		"""
 		self._playerHand.addCard(card)
 
+	def sortPlayerHand(self):
+		""" Invoke Hand.sortCards to make playerHand member a sorted list. """
+		self._playerHand.sortCards()
+

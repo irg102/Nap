@@ -1,3 +1,17 @@
+import enum
+from functools import total_ordering
+
+@total_ordering
+class OrderedEnum (enum.Enum):
+
+	def __str__(self):
+		return "%s" % (self._name_)
+
+	def __lt__(self, other):
+		if isinstance(other, type(self)):
+			return self.value < other.value
+		return NotImplemented
+
 class Card (object):
 
 	""" Standard playing card.
@@ -5,8 +19,8 @@ class Card (object):
 	Creates a playing card with hidden suit and rank attributes.
 	"""
     
-	RANK = ('2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A')
-	SUIT = ('H', 'C', 'D', 'S')
+	RANK = OrderedEnum('Rank', ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace'])
+	SUIT = OrderedEnum('Suit', ['Hearts', 'Clubs', 'Diamonds', 'Spades'])
 	
 	def __init__(self, rank, suit):
 
@@ -32,6 +46,6 @@ class Card (object):
 
 	def __str__(self):
 		""" Returns a unique string for each card. """
-		return self._rank + self._suit
+		return "{:s} of {:s}".format(self._rank, self._suit)
 
 	

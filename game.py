@@ -34,7 +34,8 @@ class Game (object):
 			for player in self._players:
 				player.receiveCard(self._deck.deal())
 		for person in self._players:
-		 	print(person)
+			person.sortPlayerHand()
+			print(person)
 		floater = "The floater is: "
 		floater += str(self._floater[0])
 		print(floater)

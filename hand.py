@@ -1,11 +1,18 @@
 from card import *
 
+def keyFunction(playingCard):
+	return playingCard.suit, playingCard.rank
+
 class Hand (object):
 	""" A hand of playing cards. """
 
 	def __init__(self):
 		""" Creates an empty list (hand) of playing cards. """
 		self._hand = []
+
+	def sortCards(self):
+		""" Orders cards in Hand according to Card.RANK and Card.SUIT. """
+		self._hand.sort(key=keyFunction, reverse=True)
 
 	def addCard(self, card):
 		""" Appends the given card to the hand.
